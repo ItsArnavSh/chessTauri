@@ -1,3 +1,7 @@
-<h1>Welcome to velteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-<p>Hello</p>
+<script>
+    import Board from "./board/+page.svelte";
+</script>
+<div class = "flex flex-col items-center">
+    <h1 class = "text-6xl funky">Chess</h1>
+    <Board />
+</div>
