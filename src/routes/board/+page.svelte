@@ -5,7 +5,7 @@ import { invoke } from '@tauri-apps/api/tauri'
 //Its Coordinates will be in a1-h8 order
 let rows = [8,7,6,5,4,3,2,1];
 let columns = ['a','b','c','d','e','f','g','h'];
-let id = "none";
+let id = "";
 // @ts-ignore
 let coord;
 //We will have two different Arrays
