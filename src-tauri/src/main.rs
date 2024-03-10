@@ -5,7 +5,6 @@
 fn greet(name: &str) -> String {
    format!("You Clicked on, {}!", name)
 }
-
 fn main() {
   tauri::Builder::default()
     .invoke_handler(tauri::generate_handler![greet])

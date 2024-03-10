@@ -1,7 +1,8 @@
 <script>
-    import Board from "./board/+page.svelte";
+    import { invoke } from '@tauri-apps/api/tauri'
+    async function start() {
+    let temp = await invoke('start')
+  }
 </script>
-<div class = "flex flex-col items-center">
-    <h1 class = "text-6xl funky">Chess</h1>
-    <Board />
-</div>
+    <a href = "/board" on:click = {start}>Play</a>
+
