@@ -67,6 +67,19 @@ fn queen(click:u64, friend:u64, enemy:u64)-> u64
     moves
 }
 
+pub check(location:u64,rook:u64,queen:u64,bishop:u64,pawn:u64,king:u64)->bool
+{
+    let perpendicular:u64 = rook(location,friend,enemy);
+    if perpendicular & (rook | queen) !=0 
+        return true;
+    let parallel:u64 = bishop(location,friend,enemy);
+    if parallel & (bishop|queen) != 0
+        return true;
+    if king(location) & king != 0
+        return true;
+    return false;
+}
+
 mod assist
 {
     pub fn mask(moves:u64)->u64
