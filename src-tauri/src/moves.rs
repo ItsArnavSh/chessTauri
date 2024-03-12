@@ -1,5 +1,6 @@
 //This rust module is the first one
 //This will return the list of moves for any given piece
+
 mod helper;
 
 fn king(click:u64, friend:u64)-> u64
@@ -60,23 +61,33 @@ fn bishop(click:u64, friend:u64, enemy:u64)-> u64
     moves |= assist::find_moves(click,1,-1,enemy,friend);
     moves
 }
-
+#[warn(dead_code)]
 fn queen(click:u64, friend:u64, enemy:u64)-> u64
 {
     let moves:u64 = rook(click,friend,enemy)|bishop(click,friend,enemy);
     moves
 }
 
-pub check(location:u64,rook:u64,queen:u64,bishop:u64,pawn:u64,king:u64)->bool
+pub fn check(location:u64,rook_piece:u64,queen_piece:u64,bishop_piece:u64,pawn_piece:u64,king_piece:u64,knight_piece:u64,enemy:u64,friend:u64)->bool
 {
     let perpendicular:u64 = rook(location,friend,enemy);
-    if perpendicular & (rook | queen) !=0 
+    if perpendicular & (rook_piece | queen_piece) !=0
+    {
         return true;
+    }
     let parallel:u64 = bishop(location,friend,enemy);
-    if parallel & (bishop|queen) != 0
+    if parallel & (bishop_piece|queen_piece) != 0
+    {
         return true;
-    if king(location) & king != 0
+    }
+    if king(location,friend) & king_piece != 0
+    {
         return true;
+    }
+    if knight(location,friend) & knight_piece != 0
+    {
+        return true;
+    }
     return false;
 }
 
