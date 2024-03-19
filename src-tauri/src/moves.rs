@@ -1,7 +1,13 @@
 //This rust module is the first one
 //This will return the list of moves for any given piece
 
-mod helper;
+use crate::helper;
+
+pub fn generate_moves(click:u64,turn:bool)
+{
+    let data = helper::read_file();
+    
+}
 
 fn king(click:u64, friend:u64)-> u64
 {
