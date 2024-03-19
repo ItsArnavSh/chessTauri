@@ -1,8 +1,18 @@
 <script>
     import { invoke } from '@tauri-apps/api/tauri'
-    async function start() {
-    let temp = await invoke('start')
-  }
-</script>
-    <a href = "/board" on:click = {start}>Play</a>
+  
+    let name = ''
+    let greetMsg = ''
+  
+    async function greet() {
+      greetMsg = await invoke('greet', { name })
+    }
+  </script>
+  
+  <div>
+    <input id="greet-input" placeholder="Enter a name..." bind:value="{name}" />
+    <button on:click="{greet}">Greet</button>
+    <p>{greetMsg}</p>
+  </div>
+<a href = "/board">Play</a>
 
